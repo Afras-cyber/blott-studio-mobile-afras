@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 export default function HomeScreen() {
   return (
     <SafeAreaView>
-      <Text>Welcome!</Text>
+      <Text className="text-primary p-4">Welcome!</Text>
     </SafeAreaView>
   );
 }
