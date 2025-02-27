@@ -20,11 +20,11 @@ export default function Error() {
     loadStoredValue();
   }, []);
   return (
-    <SafeAreaView className="bg-[#05021B] p-3 flex-1">
-      <Text className="text-white text-4xl mb-2">
+    <SafeAreaView className="bg-[#05021B] p-3 py-4 flex-1">
+  <Text className="text-white text-4xl mb-8 font-extrabold">
         Hey {storeedValue?.firstName}
       </Text>
-      <Text className="text-white text-xl mb-2">
+      <Text className="text-white font-extrabold text-xl mb-2">
         Something went wrong. Please try again later.
       </Text>
     </SafeAreaView>

@@ -25,13 +25,13 @@ const Auth = () => {
   const AuthTextInput = ({ ...children }: TextInputProps) => {
     return (
       <TextInput
-        className="border-b-2 text-[16px] border-gray-300 py-4 mb-4"
+        className="border-b-2 text-2xl border-gray-300 py-4 mb-4"
         {...children}
       />
     );
   };
   return (
-    <View className="flex-1 ">
+    <View className="flex-1 p-3">
       <StatusBar barStyle="dark-content" />
       <Formik
         validationSchema={validationSchema}
@@ -62,11 +62,11 @@ const Auth = () => {
             <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="p-4">
               <View className="flex-1 justify-between">
                 <View className="mt-8">
-                  <Text className="text-primary text-[32px] font-bold my-4">
+                  <Text className="text-primary text-4xl font-bold my-4">
                     Your legal name
                   </Text>
                   <Text
-                    className="text-[16px] mt-4 mb-6"
+                    className="text-xl mt-4 mb-6"
                     style={{ color: "#737373" }}
                   >
                     We need to know a bit about you so that we can create your

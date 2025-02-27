@@ -18,10 +18,10 @@ const Notification = () => {
           className="w-24 h-24 mb-4"
           resizeMode="contain"
         />
-        <Text className="text-lg font-semibold text-center text-[24px]">
+        <Text className=" font-semibold text-center text-3xl">
           Get the most out of Blott ✅
         </Text>
-        <Text className="text-gray-600 text-center mt-2 text-[16px]">
+        <Text className="text-[#7B7B7B] text-center mt-4 text-xl">
           Allow notifications to stay in the loop with your payments, requests,
           and groups.
         </Text>

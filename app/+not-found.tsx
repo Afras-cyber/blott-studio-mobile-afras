@@ -23,7 +23,8 @@ export default function NotFoundScreen() {
     <>
       <Stack.Screen options={{ title: "Oops!" }} />
       <SafeAreaView className="bg-[#05021B] flex-1 items-center justify-center px-5">
-        <Text className="text-white text-3xl mb-2">
+       
+        <Text className="text-white  text-4xl mb-8 font-extrabold">
           Hey {storedValue?.firstName || "Guest"},
         </Text>
         <Text className="text-white text-lg mb-4 text-center">
