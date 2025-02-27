@@ -12,7 +12,7 @@ const Notification = () => {
     <SafeAreaView className="flex-1 bg-white p-6">
       <View className="flex-1 justify-center items-center p-4">
         <Image
-          source={require("../../../assets/images/notification_icon.png")}
+          source={require("../../assets/images/notification_icon.png")}
           className="w-24 h-24 mb-4"
           resizeMode="contain"
         />

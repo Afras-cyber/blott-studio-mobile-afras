@@ -21,21 +21,20 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    const loadResources = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000)); 
+      await SplashScreen.hideAsync(); 
+    };
 
-  if (!loaded) {
-    return null;
-  }
+    loadResources();
+  }, []);
+
 
   return (
     <ThemeProvider value={ DefaultTheme}>
       <Stack  screenOptions={{ headerShown: false }}>
         <Stack.Screen name="notification" />
         <Stack.Screen name="home"  />
-        <Stack.Screen name="legalName" />
         <Stack.Screen name="dashboard" />
         <Stack.Screen name="error" />
         <Stack.Screen name="+not-found" />
