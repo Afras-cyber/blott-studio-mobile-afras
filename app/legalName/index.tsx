@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  SafeAreaView,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -13,6 +12,7 @@ import {
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "expo-router";
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
@@ -20,6 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Auth = () => {
+  const route = useRouter();
   const AuthTextInput = ({ ...children }: TextInputProps) => {
     return (
       <TextInput
@@ -35,14 +36,15 @@ const Auth = () => {
       <Formik
         validationSchema={validationSchema}
         initialValues={{ firstName: "", lastName: "" }}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={() => {
+          route.push("/legalName/notification");
         }}
       >
         {({
-          values,
-          errors,
           touched,
+          errors,
+          values,
+          isValid,
           handleChange,
           handleBlur,
           handleSubmit,
@@ -87,9 +89,13 @@ const Auth = () => {
                     className="w-16 h-16 items-center justify-center rounded-full"
                     style={{
                       backgroundColor: "#523AE4",
-                      opacity: 0.5,
+                      opacity:
+                        touched.firstName  == undefined
+                          ? 0.5
+                          : isValid ? 1 : 0.5,
                     }}
-                    onPress={(e) => alert("Form Submitted")}
+                    onPress={handleSubmit as any}
+                    disabled={!isValid}
                   >
                     <AntDesign name="right" size={24} color="white" />
                   </TouchableOpacity>

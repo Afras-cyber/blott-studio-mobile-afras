@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      router.push("/auth");
+      router.push("/legalName");
     }, 1000);
 
     return () => clearTimeout(timeout);

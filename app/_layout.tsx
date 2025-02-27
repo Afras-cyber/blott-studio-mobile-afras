@@ -35,7 +35,8 @@ export default function RootLayout() {
     <ThemeProvider value={ DefaultTheme}>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="home"  />
-        <Stack.Screen name="auth" />
+        <Stack.Screen name="legalName" />
+        <Stack.Screen name="notification" />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
