@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# Expo Project by Ahamed Afras
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is an [Expo] project built by Ahamed Afras. The given task was implemented using the Expo framework.
 
 ## Get started
 
