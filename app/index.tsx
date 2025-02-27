@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      router.push("/legalName");
+      router.push("/dashboard");
     }, 1000);
 
     return () => clearTimeout(timeout);

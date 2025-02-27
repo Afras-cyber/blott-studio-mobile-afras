@@ -90,9 +90,11 @@ const Auth = () => {
                     style={{
                       backgroundColor: "#523AE4",
                       opacity:
-                        touched.firstName  == undefined
+                        touched.firstName == undefined
                           ? 0.5
-                          : isValid ? 1 : 0.5,
+                          : isValid
+                          ? 1
+                          : 0.5,
                     }}
                     onPress={handleSubmit as any}
                     disabled={!isValid}

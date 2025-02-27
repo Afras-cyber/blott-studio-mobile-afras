@@ -33,10 +33,11 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={ DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
+      <Stack  screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="notification" />
         <Stack.Screen name="home"  />
         <Stack.Screen name="legalName" />
-        <Stack.Screen name="notification" />
+        <Stack.Screen name="dashboard" />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
