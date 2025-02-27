@@ -12,7 +12,6 @@ import "react-native-reanimated";
 import "../global.css";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -38,6 +37,7 @@ export default function RootLayout() {
         <Stack.Screen name="home"  />
         <Stack.Screen name="legalName" />
         <Stack.Screen name="dashboard" />
+        <Stack.Screen name="error" />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

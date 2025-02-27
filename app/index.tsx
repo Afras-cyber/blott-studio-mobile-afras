@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
+const LOGO = require("../assets/images/icon.png");
 
 const Home = () => {
   const router = useRouter();
@@ -14,8 +15,12 @@ const Home = () => {
   }, []);
 
   return (
-    <View>
-      <Text style={{ color: "blue", fontSize: 18 }}>Home Primary</Text>
+    <View className="bg-[#05021B] flex-1 justify-center items-center">
+      <Image
+        source={LOGO}
+        className="w-40 h-40"
+        resizeMode="contain"
+      />
     </View>
   );
 };

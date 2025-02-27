@@ -8,7 +8,7 @@ const baseURL = "https://finnhub.io/api/v1";
 const newsApi = axios.create({
   baseURL,
   params: {
-    token: API_KEY,
+    token: "API_KEY",
   },
 });
 
@@ -41,7 +41,7 @@ export const fetchNews = async ({ category = "general", ...params }) => {
     );
     return update_data;
   } catch (error) {
-    console.error("Error fetching market news:", error);
+    // console.error("Error fetching market news:", error);
     throw error;
   }
 };
