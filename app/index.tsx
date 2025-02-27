@@ -1,9 +1,21 @@
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { View, Text } from "react-native";
 
 const Home = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      router.push("/auth");
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <View>
-      <Text className="text-primary">Home Primary</Text>
+      <Text style={{ color: "blue", fontSize: 18 }}>Home Primary</Text>
     </View>
   );
 };
