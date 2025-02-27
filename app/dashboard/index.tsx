@@ -5,30 +5,42 @@ import { fetchNews } from "@/api/news";
 import { useEffect, useState } from "react";
 import { NewsTypes } from "@/types";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Dashboard = () => {
   const [data, setData] = useState<NewsTypes[]>([]);
-  // const [loading, setLoading] = useState(false);
+  const [storeedValue, setStoredValue] = useState<{
+    firstName: string;
+    lastName: string;
+  } | null>(null);
   const router = useRouter();
 
   const onFetch = async () => {
     try {
-      // if (loading) return;
-      // setLoading(true);
       const response = await fetchNews({
         category: "general",
       });
       setData(response);
-      // setLoading(false);
     } catch (err) {
       router.push("/dashboard/error");
     }
   };
+  const loadStoredValue = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("auth");
+      setStoredValue(jsonValue ? JSON.parse(jsonValue) : null);
+    } catch (error) {
+      console.error("Error fetching data from AsyncStorage", error);
+    }
+  };
   useEffect(() => {
     onFetch();
+    loadStoredValue();
   }, []);
   return (
     <SafeAreaView className="bg-[#05021B] p-3 flex-1">
-      <Text className="text-white text-4xl mb-2">Hey Afras</Text>
+      <Text className="text-white text-4xl mb-2">
+        Hey {storeedValue?.firstName}
+      </Text>
       <FlatList
         data={data}
         renderItem={({ item }) => (

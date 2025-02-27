@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import {
   View,
   Text,
@@ -8,6 +9,7 @@ import {
 } from "react-native";
 
 const Notification = () => {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1 bg-white p-6">
       <View className="flex-1 justify-center items-center p-4">
@@ -25,7 +27,7 @@ const Notification = () => {
         </Text>
       </View>
       <TouchableOpacity
-        className="bg-[#523AE4] py-4 rounded-full items-center mx-5 mb-8"
+        className="bg-[#523AE4] py-4 rounded-full items-center mx-3 mb-8"
         onPress={() =>
           Alert.alert(
             `“Blott” Would Like to Send You Notifications`,
@@ -33,12 +35,12 @@ const Notification = () => {
             [
               {
                 text: "Don't Allow",
-                onPress: () => console.log("Cancel Pressed"),
+                onPress: () => router.push("/dashboard"),
                 style: "cancel",
               },
               {
                 text: "Allow",
-                onPress: () => console.log("Allow Pressed"),
+                onPress: () => router.push("/dashboard"),
               },
             ]
           )

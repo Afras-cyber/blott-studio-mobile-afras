@@ -13,6 +13,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
@@ -20,7 +21,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Auth = () => {
-  const route = useRouter();
+  const router = useRouter();
   const AuthTextInput = ({ ...children }: TextInputProps) => {
     return (
       <TextInput
@@ -29,20 +30,25 @@ const Auth = () => {
       />
     );
   };
-
   return (
     <View className="flex-1 ">
       <StatusBar barStyle="dark-content" />
       <Formik
         validationSchema={validationSchema}
         initialValues={{ firstName: "", lastName: "" }}
-        onSubmit={() => {
-          route.push("/notification");
+        onSubmit={async (values) => {
+          try {
+            const jsonValue = JSON.stringify(values);
+            await AsyncStorage.setItem("auth", jsonValue);
+            router.push("/notification");
+          } catch (error) {
+            console.error("Failed to save user data:", error);
+          }
+      
         }}
       >
         {({
           touched,
-          errors,
           values,
           isValid,
           handleChange,
