@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, Platform } from "react-native";
+import { View, Text, FlatList, Image, Platform, ActivityIndicator } from "react-native";
 import { Link, useRouter } from "expo-router";
 import { openBrowserAsync } from "expo-web-browser";
 import { fetchNews } from "@/api/news";
@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const Dashboard = () => {
   const [data, setData] = useState<NewsTypes[]>([]);
+  const [loading, setLoading] = useState(false);
   const [storeedValue, setStoredValue] = useState<{
     firstName: string;
     lastName: string;
@@ -16,10 +17,12 @@ const Dashboard = () => {
 
   const onFetch = async () => {
     try {
+      setLoading(true);
       const response = await fetchNews({
         category: "general",
       });
       setData(response);
+      setLoading(false);
     } catch (err) {
       router.push("/dashboard/error");
     }
@@ -41,7 +44,8 @@ const Dashboard = () => {
       <Text className="text-white text-4xl mb-2">
         Hey {storeedValue?.firstName}
       </Text>
-      <FlatList
+      {
+        loading ? <ActivityIndicator color="white" size="large" /> :<FlatList
         data={data}
         renderItem={({ item }) => (
           <Link
@@ -85,6 +89,8 @@ const Dashboard = () => {
         )}
         keyExtractor={(item, index) => `${item.id.toString()}-${index}`}
       />
+      }
+      
     </SafeAreaView>
   );
 };
